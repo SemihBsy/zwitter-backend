@@ -12,10 +12,10 @@ import {
 const router = express.Router();
 
 // Create a Tweet
-router.post("/", createTweet);
+router.post("/", verifyToken, createTweet);
 
 // Delete a Tweet
-router.delete("/:id", deleteTweet);
+router.delete("/:id", verifyToken, deleteTweet);
 
 // Like or Dislike a Tweet
 router.put("/:id/like", likeOrDislike);
