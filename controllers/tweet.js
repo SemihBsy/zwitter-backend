@@ -2,6 +2,26 @@ import Tweet from "../models/Tweet.js";
 import { handleError } from "../error.js";
 import User from "../models/User.js";
 
+
+export const getTweet = async (req, res, next) => {
+  try {
+    const tweet = await Tweet.findById(req.params.id);
+    res.status(200).json(tweet)
+  } catch (err) {
+    handleError(500, err);
+  }
+};
+
+
+export const updateTweet = async (req, res, next) => {
+  try {
+    const updatedTweet = await Tweet.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    res.status(200).json(updatedTweet)
+  } catch (err) {
+    handleError(500, err);
+  }
+}
+
 export const createTweet = async (req, res, next) => {
   const newTweet = new Tweet(req.body);
   try {
@@ -11,6 +31,8 @@ export const createTweet = async (req, res, next) => {
     handleError(500, err);
   }
 };
+
+
 export const deleteTweet = async (req, res, next) => {
   try {
     const tweet = await Tweet.findById(req.params.id);
