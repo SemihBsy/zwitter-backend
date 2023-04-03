@@ -10,7 +10,8 @@ export const getUser = async (req, res, next) => {
     next(err);
   }
 };
-export const updateUser = async (req, res, next) => {
+
+export const update = async (req, res, next) => {
   if (req.params.id === req.user.id) {
     try {
       const updatedUser = await User.findByIdAndUpdate(
@@ -34,7 +35,7 @@ export const deleteUser = async (req, res, next) => {
   if (req.params.id === req.user.id) {
     try {
       await User.findByIdAndDelete(req.params.id);
-      await Tweet.deleteMany({ userId: req.params.id });
+      await Tweet.remove({ userId: req.params.id });
 
       res.status(200).json("User delete");
     } catch (err) {
@@ -66,6 +67,7 @@ export const follow = async (req, res, next) => {
     next(err);
   }
 };
+
 export const unFollow = async (req, res, next) => {
   try {
     //user

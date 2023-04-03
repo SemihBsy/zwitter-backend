@@ -90,6 +90,7 @@ export const getUserTweets = async (req, res, next) => {
     handleError(500, err);
   }
 };
+
 export const getExploreTweets = async (req, res, next) => {
   try {
     const getExploreTweets = await Tweet.find({

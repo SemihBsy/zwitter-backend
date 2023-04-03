@@ -10,11 +10,7 @@ import tweetRoutes from "./routes/tweets.js";
 
 const app = express();
 dotenv.config();
-const corsOptions = {
-  origin:'http://localhost:3000',
-  credentials: true,
-  optionSuccessStatus: 200
-}
+
 
 // database config
 const MONGO = process.env.MONGO;
@@ -32,9 +28,8 @@ mongoose.connection
   .on("close", () => console.log("Disconnected from mongodb"))
   .on("error", (error) => console.log(error));
 
-
 app.use(cookieParser());
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);

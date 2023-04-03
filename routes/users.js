@@ -1,7 +1,7 @@
 import express from "express";
 import {
   getUser,
-  updateUser,
+  update,
   deleteUser,
   follow,
   unFollow,
@@ -11,7 +11,7 @@ import { verifyToken } from "../verifyToken.js";
 const router = express.Router();
 
 // Update User
-router.put("/:id", verifyToken, updateUser);
+router.put("/:id", verifyToken, update);
 
 // Get User
 router.get("/find/:id", getUser);
