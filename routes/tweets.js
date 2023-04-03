@@ -1,7 +1,6 @@
 import express from "express";
 import { verifyToken } from "../verifyToken.js";
 import {
-  getTweet,
   updateTweet,
   createTweet,
   deleteTweet,
@@ -12,9 +11,6 @@ import {
 } from "../controllers/tweet.js";
 
 const router = express.Router();
-
-// Get a Tweet
-router.get("/:id", verifyToken, getTweet);
 
 // Update a Tweet
 router.put("/:id", verifyToken, updateTweet);

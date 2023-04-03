@@ -2,14 +2,6 @@ import Tweet from "../models/Tweet.js";
 import { handleError } from "../error.js";
 import User from "../models/User.js";
 
-export const getTweet = async (req, res, next) => {
-  try {
-    const findTweet = await Tweet.findById(req.params.id);
-    res.status(200).json(findTweet);
-  } catch (err) {
-    handleError(500, err);
-  }
-};
 
 export const updateTweet = async (req, res, next) => {
   try {
