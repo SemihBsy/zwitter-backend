@@ -36,4 +36,5 @@ router.get("/user/all/:id", getUserTweets);
 
 //explore
 router.get("/explore", getExploreTweets);
+
 export default router;
