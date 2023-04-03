@@ -31,11 +31,12 @@ export const update = async (req, res, next) => {
     return next(createError(403, "You can update only your account"));
   }
 };
+
 export const deleteUser = async (req, res, next) => {
   if (req.params.id === req.user.id) {
     try {
       await User.findByIdAndDelete(req.params.id);
-      await Tweet.remove({ userId: req.params.id });
+      await Tweet.deleteMany({ userId: req.params.id });
 
       res.status(200).json("User delete");
     } catch (err) {
